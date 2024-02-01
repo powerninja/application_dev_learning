@@ -45,7 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("Hello Flutter"),
+        actions: [Icon(Icons.add), Icon(Icons.share)],
       ),
       body: Center(
         child: Column(

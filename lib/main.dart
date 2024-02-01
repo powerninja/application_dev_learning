@@ -49,6 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [Icon(Icons.add), Icon(Icons.share)],
       ),
       body: Center(
+          child: Padding(
+        padding: const EdgeInsets.all(32),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -61,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-      ),
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

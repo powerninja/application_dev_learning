@@ -1,3 +1,4 @@
+import 'package:application_dev_learning/next_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,7 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Hello Flutter"),
         actions: [Icon(Icons.add), Icon(Icons.share)],
       ),
-      body: Center(child: Container()),
+      body: Center(
+          child: ElevatedButton(
+        child: Text('次へ'),
+        onPressed: () => {
+          //ボタンを押下された際の処理を記述する
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => nextPage()),
+          )
+        },
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

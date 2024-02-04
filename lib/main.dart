@@ -33,17 +33,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String text = "";
-  String hyoji_text = "";
+  String name = '';
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  final myFocusNode = FocusNode();
+  final _myHobbyController = TextEditingController();
+  final _myNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,29 +50,27 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
             child: Column(
               children: [
-                TextField(onChanged: (value) {
-                  text = value;
-                }),
                 TextField(
-                  focusNode: myFocusNode,
+                  controller: _myNameController,
+                  decoration: const InputDecoration(
+                    hintText: '名前',
+                  ),
                 ),
-                ElevatedButton(
-                    onPressed: () => {
-                          myFocusNode.requestFocus(),
-                          setState(() {
-                            hyoji_text = text;
-                          })
-                        },
-                    child: Text('フォーカス')),
+                TextField(
+                  controller: _myHobbyController,
+                  decoration: const InputDecoration(hintText: '趣味'),
+                ),
                 ElevatedButton(
                     onPressed: () => {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => nextPage(text)),
+                                builder: (context) => nextPage(
+                                    _myNameController.text,
+                                    _myHobbyController.text)),
                           )
                         },
-                    child: Text('遷移'))
+                    child: const Text('新規登録')),
               ],
             )));
   }

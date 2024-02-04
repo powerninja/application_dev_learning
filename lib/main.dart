@@ -34,6 +34,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String text = "";
+  String hyoji_text = "";
 
   void _incrementCounter() {
     setState(() {
@@ -55,13 +57,29 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
             child: Column(
               children: [
-                TextField(),
+                TextField(onChanged: (value) {
+                  text = value;
+                }),
                 TextField(
                   focusNode: myFocusNode,
                 ),
                 ElevatedButton(
-                    onPressed: () => {myFocusNode.requestFocus()},
-                    child: Text('フォーカス'))
+                    onPressed: () => {
+                          myFocusNode.requestFocus(),
+                          setState(() {
+                            hyoji_text = text;
+                          })
+                        },
+                    child: Text('フォーカス')),
+                ElevatedButton(
+                    onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => nextPage(text)),
+                          )
+                        },
+                    child: Text('遷移'))
               ],
             )));
   }

@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //ボタンを押下された際の処理を記述する
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => nextPage()),
+            MaterialPageRoute(builder: (context) => nextPage("Flutter")),
           )
         },
       )),

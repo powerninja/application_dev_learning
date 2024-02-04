@@ -44,27 +44,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Hello Flutter"),
-        actions: [Icon(Icons.add), Icon(Icons.share)],
-      ),
-      body: Center(
-          child: Column(children: [
-        Container(
-          width: double.infinity,
-          child: Text(
-            'KBOYさん',
-            textAlign: TextAlign.center,
-          ),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text("Hello Flutter"),
+          actions: [Icon(Icons.add), Icon(Icons.share)],
         ),
-        Text('KGIRLさん')
-      ])),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        body: Container(
+          width: double.infinity,
+          child: TextField(
+              decoration: InputDecoration(
+                //テキストの枠線なし
+                border: InputBorder.none,
+                //何を入力するかの補助テキスト
+                hintText: 'Enter a search term',
+              ),
+              //画面を開いた瞬間テキストフィールドにフォーカスされるようになる
+              autofocus: true),
+        ));
   }
 }

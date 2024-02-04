@@ -50,16 +50,20 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [Icon(Icons.add), Icon(Icons.share)],
       ),
       body: Center(
-          child: ElevatedButton(
-        child: Text('次へ'),
-        onPressed: () => {
-          //ボタンを押下された際の処理を記述する
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => nextPage("Flutter")),
-          )
-        },
-      )),
+          child: Column(children: [
+        Image.network(
+            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+        ElevatedButton(
+          child: const Text('次へ'),
+          onPressed: () => {
+            //ボタンを押下された際の処理を記述する
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => nextPage("Flutter")),
+            )
+          },
+        )
+      ])),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

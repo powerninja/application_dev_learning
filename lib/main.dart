@@ -41,6 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final myFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,16 +52,17 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: [Icon(Icons.add), Icon(Icons.share)],
         ),
         body: Container(
-          width: double.infinity,
-          child: TextField(
-              decoration: InputDecoration(
-                //テキストの枠線なし
-                border: InputBorder.none,
-                //何を入力するかの補助テキスト
-                hintText: 'Enter a search term',
-              ),
-              //画面を開いた瞬間テキストフィールドにフォーカスされるようになる
-              autofocus: true),
-        ));
+            width: double.infinity,
+            child: Column(
+              children: [
+                TextField(),
+                TextField(
+                  focusNode: myFocusNode,
+                ),
+                ElevatedButton(
+                    onPressed: () => {myFocusNode.requestFocus()},
+                    child: Text('フォーカス'))
+              ],
+            )));
   }
 }

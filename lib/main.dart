@@ -33,10 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String name = '';
-
-  final _myHobbyController = TextEditingController();
-  final _myNameController = TextEditingController();
+  //リストを表示する10000個の文字を生成する
+  final items = List<String>.generate(10000, (i) => "Item $i");
 
   @override
   Widget build(BuildContext context) {
@@ -47,31 +45,22 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: [Icon(Icons.add), Icon(Icons.share)],
         ),
         body: Container(
-            width: double.infinity,
-            child: Column(
-              children: [
-                TextField(
-                  controller: _myNameController,
-                  decoration: const InputDecoration(
-                    hintText: '名前',
-                  ),
-                ),
-                TextField(
-                  controller: _myHobbyController,
-                  decoration: const InputDecoration(hintText: '趣味'),
-                ),
-                ElevatedButton(
-                    onPressed: () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => nextPage(
-                                    _myNameController.text,
-                                    _myHobbyController.text)),
-                          )
-                        },
-                    child: const Text('新規登録')),
-              ],
-            )));
+          width: double.infinity,
+          child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text('${items[index]}'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => nextPage('${items[index]}', '')),
+                  );
+                },
+              );
+            },
+          ),
+        ));
   }
 }

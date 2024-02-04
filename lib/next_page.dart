@@ -10,7 +10,7 @@ class nextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello Flutter"),
+        title: const Text("Hello Flutter"),
       ),
       body: Container(
           color: Colors.red, child: Row(children: [Text(name), Text(hobby)])),

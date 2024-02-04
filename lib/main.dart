@@ -51,18 +51,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
           child: Column(children: [
-        Image.network(
-            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-        ElevatedButton(
-          child: const Text('次へ'),
-          onPressed: () => {
-            //ボタンを押下された際の処理を記述する
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => nextPage("Flutter")),
-            )
-          },
-        )
+        Container(
+          width: double.infinity,
+          child: Text(
+            'KBOYさん',
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Text('KGIRLさん')
       ])),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
